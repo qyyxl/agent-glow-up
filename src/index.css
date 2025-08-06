@@ -6,48 +6,48 @@
 
 @layer base {
   :root {
-    /* 深色科技主题 */
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
+    /* 浅色科技主题 */
+    --background: 0 0% 100%;
+    --foreground: 222 84% 4.9%;
 
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
 
-    --popover: 222 47% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
 
     /* 科技蓝色系 */
     --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 0 0% 98%;
     --primary-glow: 217 91% 70%;
 
-    --secondary: 222 47% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
 
-    --muted: 222 47% 12%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 46.9%;
 
     --accent: 142 76% 55%;
-    --accent-foreground: 222 47% 11%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 222 47% 20%;
-    --input: 222 47% 15%;
+    --border: 220 13% 91%;
+    --input: 0 0% 100%;
     --ring: 217 91% 60%;
 
     --radius: 0.75rem;
 
-    /* 科技渐变 */
+    /* 科技渐变 - 浅色版本 */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(142 76% 55%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(222 47% 12%) 0%, hsl(222 47% 8%) 100%);
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(217 91% 60% / 0.15) 0%, transparent 70%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(217 91% 60% / 0.05) 0%, transparent 70%);
 
-    /* 阴影效果 */
-    --shadow-tech: 0 4px 20px hsl(217 91% 60% / 0.15);
-    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.3);
-    --shadow-card: 0 8px 32px hsl(222 47% 4% / 0.8);
+    /* 阴影效果 - 浅色适配 */
+    --shadow-tech: 0 4px 20px hsl(217 91% 60% / 0.1);
+    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.15);
+    --shadow-card: 0 8px 32px hsl(220 13% 91% / 0.3);
 
     /* 动画时间 */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,8 +141,8 @@
     @apply relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-primary/20 before:animate-ping;
   }
 
-  /* 科技感输入框 */
+  /* 科技感输入框 - 浅色适配 */
   .input-tech {
-    @apply bg-input/50 border border-border/50 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 backdrop-blur-sm;
+    @apply bg-white border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 shadow-sm hover:shadow-md;
   }
 }

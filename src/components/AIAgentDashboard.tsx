@@ -42,7 +42,7 @@ const AIAgentDashboard = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* 顶部导航栏 */}
-      <header className="border-b border-border/50 bg-card/50 backdrop-blur-sm">
+      <header className="border-b border-border bg-white/80 backdrop-blur-sm shadow-sm">
         <div className="flex items-center justify-between px-6 py-4">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg">
@@ -71,7 +71,7 @@ const AIAgentDashboard = () => {
 
       <div className="flex">
         {/* 左侧边栏 */}
-        <aside className="w-80 border-r border-border/50 bg-card/30 backdrop-blur-sm animate-slide-in-left">
+        <aside className="w-80 border-r border-border bg-muted/30 backdrop-blur-sm animate-slide-in-left">
           <div className="p-6 space-y-6">
             {/* 环境配置 */}
             <div className="space-y-4">
@@ -210,7 +210,7 @@ const AIAgentDashboard = () => {
         </main>
 
         {/* 右侧分析流程面板 */}
-        <aside className="w-80 border-l border-border/50 bg-card/30 backdrop-blur-sm animate-slide-in-right">
+        <aside className="w-80 border-l border-border bg-muted/30 backdrop-blur-sm animate-slide-in-right">
           <div className="p-6 space-y-6">
             <div className="flex items-center space-x-3">
               <div className="p-2 bg-accent/20 rounded-lg">
