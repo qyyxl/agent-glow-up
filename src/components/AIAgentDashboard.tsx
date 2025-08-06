@@ -18,7 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 const AIAgentDashboard = () => {
-  const [selectedEnvironment, setSelectedEnvironment] = useState('生产环境 (PROD)');
+  const [selectedEnvironment, setSelectedEnvironment] = useState('PROD');
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [analysisText, setAnalysisText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -82,16 +82,24 @@ const AIAgentDashboard = () => {
               
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm text-muted-foreground mb-2 block">选择环境</label>
-                  <select 
-                    value={selectedEnvironment}
-                    onChange={(e) => setSelectedEnvironment(e.target.value)}
-                    className="input-tech w-full"
-                  >
-                    <option>生产环境 (PROD)</option>
-                    <option>测试环境 (TEST)</option>
-                    <option>开发环境 (DEV)</option>
-                  </select>
+                  <label className="text-sm text-muted-foreground mb-3 block">选择环境</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['PROD', 'UAT', 'FAT'].map((env) => (
+                      <Button
+                        key={env}
+                        variant={selectedEnvironment === env ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => setSelectedEnvironment(env)}
+                        className={`transition-all duration-200 ${
+                          selectedEnvironment === env 
+                            ? 'bg-primary text-primary-foreground shadow-[var(--shadow-tech)]' 
+                            : 'hover:bg-primary/10 hover:border-primary/50'
+                        }`}
+                      >
+                        {env}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
                 
                 <div>
