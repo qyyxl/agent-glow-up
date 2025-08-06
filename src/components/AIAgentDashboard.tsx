@@ -230,31 +230,66 @@ const AIAgentDashboard = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               {analysisSteps.map((step, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                    step.status === 'completed' 
-                      ? 'bg-accent text-accent-foreground' 
-                      : step.status === 'current' 
-                      ? 'bg-primary text-primary-foreground animate-glow-pulse' 
-                      : 'bg-muted text-muted-foreground'
-                  }`}>
-                    {step.status === 'completed' ? (
-                      <div className="w-3 h-3 bg-current rounded-full"></div>
-                    ) : step.status === 'current' ? (
-                      <Play className="h-3 w-3" />
-                    ) : (
-                      <Pause className="h-3 w-3" />
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-medium text-sm">{step.title}</h4>
-                    <p className="text-xs text-muted-foreground">{step.subtitle}</p>
-                  </div>
-                  {step.status === 'current' && (
-                    <ChevronRight className="h-4 w-4 text-primary animate-pulse" />
+                <div key={index} className="relative">
+                  {/* 连接线 */}
+                  {index < analysisSteps.length - 1 && (
+                    <div className={`absolute left-4 top-8 w-0.5 h-8 ${
+                      step.status === 'completed' 
+                        ? 'bg-accent' 
+                        : step.status === 'current' 
+                        ? 'bg-gradient-to-b from-primary to-muted animate-pulse' 
+                        : 'bg-muted'
+                    }`}></div>
                   )}
+                  
+                  <div className="flex items-start space-x-3">
+                    <div className={`relative flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 ${
+                      step.status === 'completed' 
+                        ? 'bg-accent border-accent text-accent-foreground' 
+                        : step.status === 'current' 
+                        ? 'bg-primary border-primary text-primary-foreground animate-glow-pulse' 
+                        : 'bg-background border-muted text-muted-foreground'
+                    }`}>
+                      {step.status === 'completed' ? (
+                        <div className="w-3 h-3 bg-current rounded-full"></div>
+                      ) : step.status === 'current' ? (
+                        <div className="w-2 h-2 bg-current rounded-full animate-ping"></div>
+                      ) : (
+                        <div className="w-2 h-2 bg-current rounded-full opacity-50"></div>
+                      )}
+                      
+                      {/* 进度环 */}
+                      {step.status === 'current' && (
+                        <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-spin">
+                          <div className="w-1 h-1 bg-primary rounded-full absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                      )}
+                    </div>
+                    
+                    <div className="flex-1 pb-4">
+                      <div className={`p-3 rounded-lg border transition-all duration-300 ${
+                        step.status === 'completed' 
+                          ? 'bg-accent/10 border-accent/20' 
+                          : step.status === 'current' 
+                          ? 'bg-primary/10 border-primary/20 shadow-[var(--shadow-tech)]' 
+                          : 'bg-muted/30 border-border'
+                      }`}>
+                        <h4 className={`font-medium text-sm mb-1 ${
+                          step.status === 'current' ? 'text-primary' : ''
+                        }`}>{step.title}</h4>
+                        <p className="text-xs text-muted-foreground">{step.subtitle}</p>
+                        
+                        {/* 当前步骤的进度条 */}
+                        {step.status === 'current' && (
+                          <div className="mt-2 w-full bg-muted rounded-full h-1">
+                            <div className="bg-primary h-1 rounded-full animate-pulse" style={{width: '60%'}}></div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
